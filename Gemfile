@@ -21,6 +21,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'typhoeus'
+gem 'rufus-scheduler', :git => 'https://github.com/jmettraux/rufus-scheduler.git'
+gem 'coffee-script'
+gem 'json'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

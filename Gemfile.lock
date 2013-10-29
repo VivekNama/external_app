@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/jmettraux/rufus-scheduler.git
+  revision: 433c2bb872be20bfdca50e3c048b0b4e0d5df59c
+  specs:
+    rufus-scheduler (3.0.3)
+      tzinfo
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -93,6 +100,8 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    typhoeus (0.3.3)
+      mime-types
     tzinfo (0.3.38)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
@@ -103,8 +112,12 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  coffee-script
   jquery-rails
+  json
   rails (= 3.2.13)
+  rufus-scheduler!
   sass-rails (~> 3.2.3)
   sqlite3
+  typhoeus
   uglifier (>= 1.0.3)
