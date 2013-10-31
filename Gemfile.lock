@@ -1,4 +1,14 @@
 GIT
+  remote: https://075f5f799dc6cfd1d44e4b5c8db6094ded0cd9e7:x-oauth-basic@github.com/vitrue/crmodilizer.git
+  revision: 66bcb7711e6584368c94f23c11eb6eda64bab7f7
+  tag: v1.1.0
+  specs:
+    crmodilizer (1.0.0)
+      ruby-mcrypt (~> 0.2.0)
+      savon (~> 1.2.0)
+      uuidtools (~> 2.1.3)
+
+GIT
   remote: https://github.com/jmettraux/rufus-scheduler.git
   revision: 433c2bb872be20bfdca50e3c048b0b4e0d5df59c
   specs:
@@ -35,6 +45,9 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    akami (1.2.0)
+      gyoku (>= 0.4.0)
+      nokogiri (>= 1.4.0)
     arel (3.0.2)
     builder (3.0.4)
     coffee-rails (3.2.2)
@@ -46,7 +59,11 @@ GEM
     coffee-script-source (1.6.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    gyoku (0.4.6)
+      builder (>= 2.1.2)
     hike (1.2.3)
+    httpi (1.1.1)
+      rack
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (3.0.4)
@@ -57,7 +74,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25)
+    mini_portile (0.5.2)
     multi_json (1.8.2)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
+    nori (1.1.5)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -84,11 +105,20 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    ruby-mcrypt (0.2.0)
     sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    savon (1.2.0)
+      akami (~> 1.2.0)
+      builder (>= 2.1.2)
+      gyoku (~> 0.4.5)
+      httpi (~> 1.1.0)
+      nokogiri (>= 1.4.0)
+      nori (~> 1.1.0)
+      wasabi (~> 2.5.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -106,6 +136,10 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    uuidtools (2.1.4)
+    wasabi (2.5.1)
+      httpi (~> 1.0)
+      nokogiri (>= 1.4.0)
 
 PLATFORMS
   ruby
@@ -113,6 +147,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   coffee-script
+  crmodilizer!
   jquery-rails
   json
   rails (= 3.2.13)

@@ -25,6 +25,7 @@ gem 'typhoeus'
 gem 'rufus-scheduler', :git => 'https://github.com/jmettraux/rufus-scheduler.git'
 gem 'coffee-script'
 gem 'json'
+gem 'crmodilizer', :git => 'https://075f5f799dc6cfd1d44e4b5c8db6094ded0cd9e7:x-oauth-basic@github.com/vitrue/crmodilizer.git', :tag => 'v1.1.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

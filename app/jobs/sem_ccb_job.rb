@@ -6,11 +6,12 @@ require 'rails'
 class SemCcbJob
   CRM_NAME = "cc_b"
   SERVER_NAME = "testservicehub.involver.com" #amp2.involver.dev #testservicehub.involver.com
-  puts "----#{SERVER_NAME}---"
+  puts "----Checking for Service Requests for #{CRM_NAME} on #{SERVER_NAME}---"
 
   def perform
     puts ""
     response = Typhoeus::Request.get("https://testservicehub.involver.com/api/crm_sync", :params => {:crm_name => CRM_NAME})
+    #response = Typhoeus::Request.get("https://amp2.involver.dev/api/crm_sync", :params => {:crm_name => CRM_NAME})
     puts response.body
 
     if response.success?
@@ -20,13 +21,6 @@ class SemCcbJob
       puts "sr_infos=#{sr_infos}"
 
       if sr_infos.present?
-
-        sr_header =
-          {
-            "username" => "weblogic",
-            "password" => "weblogic123",
-            "endpoint_url" => "http://soa.srm-ugbu.dyndns.org:7211/soa-infra/services/SRM-CCB/SRMCCBEchoServiceEBF/srmccbservicerequestbpel_client_ep_ep?WSDL"
-          }
 
         sr_infos.each do |sr_info|
           puts "sr_info=#{sr_info}"
@@ -47,7 +41,7 @@ class SemCcbJob
           puts "sr_body=#{sr_body}"
 
           begin
-            incident_num = String(Time.now.hash) #create_sr sr_header, sr_body
+            incident_num = create_sr sr_body #String(Time.now.hash)
             puts "New incident_num=#{incident_num}"
 
             puts "URL=http://amp2.involver.dev/api/crm_sync/#{sr_info["post_id"]}"
@@ -71,13 +65,28 @@ class SemCcbJob
     #self.class.seed
   end
 
+  def create_sr sr_body
+    app = Crmodilizer::ServiceRequestService.new(sr_header)
+    sr_no = app.create_service_request(sr_body)
+  end
+
+  def sr_header
+    {
+      "username" => 'SOCIALDEV/SEM',  #"weblogic"
+      "password" => 'Demo1234',       #"weblogic123"
+      "endpoint_url" => 'https://secure-slsomxuha.crmondemand.com/Services/Integration', #"http://soa.srm-ugbu.dyndns.org:7211/soa-infra/services/SRM-CCB/SRMCCBEchoServiceEBF/srmccbservicerequestbpel_client_ep_ep?WSDL"
+      "client_name" => 'Oracle SEM'
+    }
+  end
+
 end
 
 scheduler = Rufus::Scheduler.new
 
-scheduler.every '5s' do
-  puts 'Hi... Rufus'
+scheduler.every '11s' do
+  puts 'Hi ... Rufus'
   SemCcbJob.new.perform
+  puts 'By .. Rufus'
 end
 
 scheduler.join
